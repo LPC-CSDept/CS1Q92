@@ -1,18 +1,19 @@
-#include "Q91.hpp"
+#include "Q92.hpp"
 
 int main()
 {
-        int numEmp, cnt;
-        Employee emp[SIZE];
-        string dname;
+        Names names[MAXSIZE];
+        int numRecords, cnt;
 
-        numEmp = makeEmpRecord(emp);
-        cout << "There are " << numEmp << " employees in the structure array. \n\n";
-        printEmp(emp, numEmp);
+        numRecords = makeRecord(names);
+        cout << "Total " << numRecords << " records have been made\n";
 
-        dname = "HR";
-        cout << "************************************************************************************************\n";
-        cnt = findEmp(emp, numEmp, dname);
-        cout << "Total Employess found : " << cnt << endl;
-        cout << "************************************************************************************************\n";
+        cnt = printRecord(names, numRecords, "CA");
+        cout << "Total " << cnt << " records are printed \n";
+
+        cnt = findNames(names, numRecords, "NY", 2018);
+        cout << "Total " << cnt << " records are found\n";
+
+        cnt = findNames(names, numRecords, "CA", 2011);
+        cout << "Total " << cnt << " records are found\n";
 }

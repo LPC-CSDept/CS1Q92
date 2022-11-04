@@ -2,31 +2,32 @@
 #define CATCH_CONFIG_MAIN // defines main() automatically
 #include <iostream>
 #include "catch.hpp"
-#include "Q91.hpp"
-// tests for exercise 1
+#include "Q92.hpp"
 
-TEST_CASE("Ex1 makeEmpRecord() ", "[example]")
+TEST_CASE("Ex1 makeRecord() ", "[example]")
 {
-	int numEmp, cnt;
-	Employee emp[SIZE];
-	string dname;
+	Names names[MAXSIZE];
+	int numRecords, cnt;
 
-	numEmp = makeEmpRecord(emp);
-	cout << "There are " << numEmp << " employees in the structure array. \n\n";
-	INFO("The number of Employess shoud be 10");
-	REQUIRE(numEmp == 10);
-	INFO("Print the last Employee");
-	printEmp(emp, numEmp, 9);
+	numRecords = makeRecord(names);
+	cout << "Total " << numRecords << " records have been made\n";
+	INFO("The number of Records should be 4080");
+	REQUIRE(numRecords == 4080);
 
-	dname = "HR";
-	cnt = findEmp(emp, numEmp, dname);
-	cout << "Total Employess found : " << cnt << endl;
-	INFO("The number of Employess in " << dname << " 2");
-	REQUIRE(cnt == 2);
+	cnt = printRecord(names, numRecords, "CA");
+	cout << "Total " << cnt << " records are printed \n";
+	INFO("The number of Records should be 80");
+	REQUIRE(cnt == 80);
 
-	dname = "Computer";
-	cnt = findEmp(emp, numEmp, dname);
-	cout << "Total Employess found : " << cnt << endl;
-	INFO("The number of Employess in " << dname << " 4");
-	REQUIRE(cnt == 4);
+	cnt = findNames(names, numRecords, "NY", 2018);
+	cout << "Total " << cnt << " records are found\n";
+
+	INFO("The number of Records in NY 2018 should be 10");
+	REQUIRE(cnt == 10);
+
+	cnt = findNames(names, numRecords, "CA", 2011);
+	cout << "Total " << cnt << " records are found\n";
+
+	INFO("The number of Records in NY 2018 should be 10");
+	REQUIRE(cnt == 10);
 }
